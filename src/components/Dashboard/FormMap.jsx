@@ -23,7 +23,7 @@ const FormMap = () => {
     const { control, handleSubmit, reset } = useForm({
         defaultValues: {
             Formdata: 0,
-            Lot_No: 0,
+            // Lot_No: 0,
             Lot_Type: "",
             Size: "",
             Price_USD: "",
@@ -37,7 +37,7 @@ const FormMap = () => {
         const updatedFeature = {
             attributes: {
                 OBJECTID: Formdata.OBJECTID, // must include unique ID!
-                Lot_No: Formdata.Lot_No,
+                // Lot_No: Formdata.Lot_No,
                 Lot_Type: Formdata.Lot_Type,
                 Size: Formdata.Size,
                 Price_USD: Formdata.Price_USD,
@@ -71,7 +71,7 @@ const FormMap = () => {
                 className="flex flex-col items-center justify-center  px-2 space-y-2  w-full"
             >
                 {/* Lot_No */}
-                <div className="min-w-full ">
+                {/* <div className="min-w-full ">
                     <Controller
                         key="Lot_No"
                         name="Lot_No"
@@ -87,7 +87,7 @@ const FormMap = () => {
                             />
                         )}
                     />
-                </div>
+                </div> */}
 
                 {/* Square Feet*/}
                 <div className="min-w-full">
@@ -185,6 +185,9 @@ const FormMap = () => {
                                     value="under contract"
                                 >
                                     under contract
+                                </MenuItem>
+                                <MenuItem key="reserve" value="reserve">
+                                    reserve
                                 </MenuItem>
                             </TextField>
                         )}
