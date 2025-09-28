@@ -1,0 +1,17 @@
+Add Layer : T8g4K9zQa
+Change Basemap : W1dXp7Lrm
+Share Map : F2qVr8Xpt
+Make Query : M5kZn2Qwb
+Set Label : R9mBf3Tyo
+Edit Data : C7hDs6Nqe
+Set Buffer : L4zWu1Kti
+Use Route : P6qVy9Zmd
+See Attributes : znJBiDUnhR4B@Kv7
+Use Tools : A3nJr5Wqv
+Print : E8bXc7Mls
+Admin : XxBn9Q9@NaIJ7Gps 
+   {permissions?.includes("T8g4K9zQa") || permissions?.includes("XxBn9Q9@NaIJ7Gps") && (
+                    
+                )}
+
+Permissions : gIjxYweHWxrC1 
