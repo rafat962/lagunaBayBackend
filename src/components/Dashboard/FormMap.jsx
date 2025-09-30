@@ -17,7 +17,15 @@ const FormMap = () => {
     const { data } = state;
     useEffect(() => {
         if (data) {
-            reset(data);
+            const sanitized = {
+                ...data,
+                SizeFT: data?.SizeFT ?? "",
+                Size: data?.Size ?? "",
+                Price_USD: data?.Price_USD ?? "",
+                Lot_Type: data?.Lot_Type ?? "",
+                Status: data?.Status ?? "",
+            };
+            reset(sanitized);
         }
     }, [data]);
     const { control, handleSubmit, reset } = useForm({
@@ -26,12 +34,14 @@ const FormMap = () => {
             // Lot_No: 0,
             Lot_Type: "",
             Size: "",
+            SizeFT: "",
             Price_USD: "",
             Status: "",
         },
     });
     const [open, setOpen] = useState(false);
     function onSuccess(Formdata) {
+        if (!data || Object.keys(data).length === 0) return;
         if (!Formdata) return;
         setOpen(true);
         const updatedFeature = {
@@ -42,6 +52,7 @@ const FormMap = () => {
                 Size: Formdata.Size,
                 Price_USD: Formdata.Price_USD,
                 Status: Formdata.Status,
+                SizeFT: Formdata.SizeFT,
             },
         };
         console.log(updatedFeature);
@@ -88,7 +99,6 @@ const FormMap = () => {
                         )}
                     />
                 </div> */}
-
                 {/* Square Feet*/}
                 <div className="min-w-full">
                     <Controller
@@ -102,7 +112,25 @@ const FormMap = () => {
                                 className=" w-full text-right"
                                 id="standard-basic"
                                 type="text"
-                                label="Size"
+                                label="SIZE (SQ M)"
+                            />
+                        )}
+                    />
+                </div>
+                {/* Square Feet*/}
+                <div className="min-w-full">
+                    <Controller
+                        key="SizeFT"
+                        name="SizeFT"
+                        control={control}
+                        render={({ field }) => (
+                            <TextField
+                                value={field.value || ""} // Ensure value is never null
+                                {...field}
+                                className=" w-full text-right"
+                                id="standard-basic"
+                                type="text"
+                                label="Size (SQ FT)"
                             />
                         )}
                     />
