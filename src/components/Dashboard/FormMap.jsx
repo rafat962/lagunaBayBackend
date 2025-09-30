@@ -24,6 +24,8 @@ const FormMap = () => {
                 Price_USD: data?.Price_USD ?? "",
                 Lot_Type: data?.Lot_Type ?? "",
                 Status: data?.Status ?? "",
+                Parcel_View: data?.Parcel_View ?? "",
+                Land_Terrain: data?.Land_Terrain ?? "",
             };
             reset(sanitized);
         }
@@ -37,6 +39,8 @@ const FormMap = () => {
             SizeFT: "",
             Price_USD: "",
             Status: "",
+            Parcel_View: "",
+            Land_Terrain: "",
         },
     });
     const [open, setOpen] = useState(false);
@@ -53,9 +57,10 @@ const FormMap = () => {
                 Price_USD: Formdata.Price_USD,
                 Status: Formdata.Status,
                 SizeFT: Formdata.SizeFT,
+                Parcel_View: Formdata.Parcel_View,
+                Land_Terrain: Formdata.Land_Terrain,
             },
         };
-        console.log(updatedFeature);
         Parcels.applyEdits({
             updateFeatures: [updatedFeature],
         })
@@ -216,6 +221,80 @@ const FormMap = () => {
                                 </MenuItem>
                                 <MenuItem key="reserve" value="reserve">
                                     reserve
+                                </MenuItem>
+                            </TextField>
+                        )}
+                    />
+                </div>
+                {/* Parcel_View */}
+                <div className="min-w-full ">
+                    <Controller
+                        key="Parcel_View"
+                        name="Parcel_View"
+                        control={control}
+                        defaultValue=""
+                        render={({ field }) => (
+                            <TextField
+                                {...field}
+                                className="w-full text-right"
+                                id="standard-basic"
+                                select
+                                label="View"
+                            >
+                                <MenuItem key="Sea view" value="Sea view">
+                                    Sea view
+                                </MenuItem>
+                                <MenuItem key="River view" value="River view">
+                                    River view
+                                </MenuItem>
+                                <MenuItem
+                                    key="Mountain view"
+                                    value="Mountain view"
+                                >
+                                    Mountain view
+                                </MenuItem>
+                                <MenuItem key="City view" value="City view">
+                                    City view
+                                </MenuItem>
+                            </TextField>
+                        )}
+                    />
+                </div>
+                {/* Land_Terrain */}
+                <div className="min-w-full ">
+                    <Controller
+                        key="Land_Terrain"
+                        name="Land_Terrain"
+                        control={control}
+                        defaultValue=""
+                        render={({ field }) => (
+                            <TextField
+                                {...field}
+                                className="w-full text-right"
+                                id="standard-basic"
+                                select
+                                label="Land Terrain"
+                            >
+                                <MenuItem key="Flat land" value="Flat land">
+                                    Flat land
+                                </MenuItem>
+                                <MenuItem
+                                    key="Slopes up at the back"
+                                    value="Slopes up at the back"
+                                >
+                                    Slopes up at the back
+                                </MenuItem>
+                                <MenuItem
+                                    key="Slopes down in the back"
+                                    value="Slopes down in the back"
+                                >
+                                    Slopes down in the back
+                                </MenuItem>
+                                <MenuItem
+                                    key="Slopes below road level"
+                                    value="Slopes below road level"
+                                >
+                                    Slopes below road level
                                 </MenuItem>
                             </TextField>
                         )}
