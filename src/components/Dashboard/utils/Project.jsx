@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 import { MenuItem, TextField } from "@mui/material";
 import React, { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useMapContext } from "../../../shared/Context/MapContext";
 import { getExtent, projects } from "../helpers/getProjectExtent";
+import { useSearchParams } from "react-router-dom";
 
 const Project = () => {
     const { dispatch } = useMapContext();
@@ -10,6 +12,7 @@ const Project = () => {
     const watchProject = watch("Project");
     const { state } = useMapContext();
     const { view } = state;
+    const [searchParams, setSerchParams] = useSearchParams();
     useEffect(() => {
         let extent;
         if (view) {
@@ -26,6 +29,12 @@ const Project = () => {
                 }
             );
         }
+        if (extent) {
+            setSerchParams({
+                project: watchProject,
+                extent: JSON.stringify(extent),
+            });
+        }
         dispatch({
             type: "project",
             payload: {
@@ -34,6 +43,24 @@ const Project = () => {
             },
         });
     }, [watchProject]);
+
+    // useEffect(() => {
+    //     const extent = JSON.parse(searchParams.get("extent"));
+    //     console.log("extent", extent);
+    //     if(view){
+    //         view?.goTo(
+    //             {
+    //                 center: extent,
+    //                 zoom: 18,
+    //             },
+    //             {
+    //                 duration: 2000, // animation duration in milliseconds (2 seconds)
+    //                 easing: "ease-in-out", // smooth acceleration and deceleration
+    //             }
+    //         );
+
+    //     }
+    // }, [searchParams,view]);
     return (
         <div className="w-30 h-fit">
             {/* Project */}

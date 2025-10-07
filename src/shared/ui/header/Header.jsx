@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Langage from "./utils/Langage";
 import Expand from "./utils/Expand";
 import Dark from "./utils/Dark";
@@ -8,26 +8,54 @@ import Search from "./utils/Search";
 import Avatar from "@mui/material/Avatar";
 import Project from "../../../components/Dashboard/utils/Project";
 import { useMapContext } from "../../Context/MapContext";
-import { HiOutlineShare } from "react-icons/hi2";
+import { HiOutlineShare, HiShare } from "react-icons/hi2";
 import toast from "react-hot-toast";
+import { useSearchParams } from "react-router-dom";
 const Header = () => {
     const [darkMode, setDarkMode] = useState(false);
     const { state } = useMapContext();
-    const { project, extent } = state;
+    const { view } = state;
+    const [searchParams] = useSearchParams();
+    const [project, setProject] = useState("NORWICH PORTLAND JAMAICA");
+    useEffect(() => {
+        const projectName = searchParams.get("project");
+        const extent = searchParams.get("extent");
+        if (projectName) {
+            setProject(projectName);
+        } else {
+            setProject("NORWICH PORTLAND JAMAICA");
+        }
+        if (extent) {
+            const extentArray = JSON.parse(extent);
+            if (view) {
+                console.log("view", view);
+                view.when(() => {
+                    view.goTo(
+                        {
+                            center: extentArray,
+                            zoom: 18,
+                        },
+                        {
+                            duration: 2000,
+                            easing: "ease-in-out",
+                        }
+                    );
+                });
+            }
+        }
+    }, [searchParams, view]);
     const ShareMap = () => {
-        const Sextent = JSON.stringify(extent);
+        const extent = searchParams.get("extent");
+        const extentArray = JSON.parse(extent);
+        const Sextent = JSON.stringify(extentArray);
         const url = `https://lagunabay.netlify.app/MainMap?project=${project}&extent=${Sextent}`;
-
         // Copy URL to clipboard
         navigator.clipboard
             .writeText(url)
             .then(() => {
-                toast.success(
-                    "Map link copied to clipboard! You can now share it with others.",
-                    {
-                        autoClose: 6000,
-                    }
-                );
+                toast.success("Frontend clipboard!", {
+                    autoClose: 6000,
+                });
             })
             .catch(() => {
                 toast.error("❌ Failed to copy the link. Please try again.", {
@@ -36,7 +64,26 @@ const Header = () => {
                 });
             });
     };
-
+    const ShareMapBackend = () => {
+        const extent = searchParams.get("extent");
+        const extentArray = JSON.parse(extent);
+        const Sextent = JSON.stringify(extentArray);
+        const url = `https://ecosteadbackend.netlify.app/dashboard?project=${project}&extent=${Sextent}`;
+        // Copy URL to clipboard
+        navigator.clipboard
+            .writeText(url)
+            .then(() => {
+                toast.success("Backend clipboard!", {
+                    autoClose: 6000,
+                });
+            })
+            .catch(() => {
+                toast.error("❌ Failed to copy the link. Please try again.", {
+                    position: "bottom-right",
+                    autoClose: 6000,
+                });
+            });
+    };
     return (
         <div className="p-3 w-full h-full border-b-[1px] border-b-gray-400  trans">
             <div className="flex h-full items-center justify-between">
@@ -47,12 +94,7 @@ const Header = () => {
                     {/* Expand */}
                     <Expand />
                     <div className="flex items-center justify-center w-full ">
-                        <Project />
-                        {/* Dark */}
-                        {/* <Dark darkMode={darkMode} setDarkMode={setDarkMode} /> */}
-                        {/* Notification */}
-                        {/* <Notification /> */}
-                        {/* copy */}
+                        {/* <Project /> */}
                     </div>
                     {/* SearchBar */}
                     {/* <Search /> */}
@@ -61,11 +103,15 @@ const Header = () => {
                     {project}
                 </div>
                 {/* right */}
-                <div className="">
+                <div className="flex items-center justify-center space-x-8">
+                    {/* <HiShare
+                        onClick={ShareMapBackend}
+                        className=" cursor-pointer text-2xl hover:text-blue-500 trans"
+                    />
                     <HiOutlineShare
                         onClick={ShareMap}
                         className=" cursor-pointer text-2xl hover:text-blue-500 trans"
-                    />
+                    /> */}
                 </div>
                 {/* <div className="flex">
                     {darkMode && (
