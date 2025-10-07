@@ -2,7 +2,7 @@ import { MenuItem, TextField } from "@mui/material";
 import React, { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useMapContext } from "../../../shared/Context/MapContext";
-import { getExtent } from "../helpers/getProjectExtent";
+import { getExtent, projects } from "../helpers/getProjectExtent";
 
 const Project = () => {
     const { dispatch } = useMapContext();
@@ -11,7 +11,6 @@ const Project = () => {
     const { state } = useMapContext();
     const { view } = state;
     useEffect(() => {
-        console.log(view);
         let extent;
         if (view) {
             extent = getExtent(watchProject);
@@ -53,15 +52,16 @@ const Project = () => {
                             label="Project"
                             variant="standard"
                         >
-                            <MenuItem
-                                key="NORWICH PORTLAND JAMAICA"
-                                value="NORWICH PORTLAND JAMAICA"
-                            >
-                                NORWICH PORTLAND JAMAICA
-                            </MenuItem>
-                            <MenuItem key="Villanova" value="Villanova">
-                                Villanova
-                            </MenuItem>
+                            {projects.map((item) => {
+                                return (
+                                    <MenuItem
+                                        key={item?.name}
+                                        value={item?.name}
+                                    >
+                                        {item?.name}
+                                    </MenuItem>
+                                );
+                            })}
                         </TextField>
                     )}
                 />

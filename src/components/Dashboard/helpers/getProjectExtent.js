@@ -14,4 +14,4 @@ function getExtent(name) {
     return projects.filter((item) => item.name == name)[0].extent;
 }
 
-export { getExtent };
+export { getExtent, projects };
