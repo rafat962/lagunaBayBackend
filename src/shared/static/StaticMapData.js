@@ -8,7 +8,7 @@ const Parcels = new FeatureLayer({
     title: "Parcels",
     labelingInfo: [
         {
-            labelExpressionInfo: { expression: "$feature.Lot_No" }, // غيّر NAME للفيلد بتاعك
+            labelExpressionInfo: { expression: "$feature.Lot_NUM" }, // غيّر NAME للفيلد بتاعك
             symbol: {
                 type: "text",
                 color: "black",

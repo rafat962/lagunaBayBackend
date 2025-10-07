@@ -8,8 +8,8 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useMapContext } from "../../shared/Context/MapContext";
-import { Parcels } from "../../shared/static/StaticMapData";
+import { useMapContext } from "../../../shared/Context/MapContext";
+import { Parcels } from "../../../shared/static/StaticMapData";
 import toast from "react-hot-toast";
 import { Grid, Card, CardMedia, CardActions, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";

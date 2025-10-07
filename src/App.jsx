@@ -11,6 +11,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { useGetDarkmode } from "./shared/hooks/useGetDarkmode";
 import { useEffect, useMemo } from "react";
 import getToken from "./shared/helpers/GetToken";
+import { NavContext } from "./shared/Context/MapContext";
 const AppContainer = styled.div`
     box-sizing: border-box;
     padding: 0px;
@@ -51,7 +52,9 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <RouterProvider router={routs}></RouterProvider>
+            <NavContext>
+                <RouterProvider router={routs}></RouterProvider>
+            </NavContext>
         </ThemeProvider>
     );
 }

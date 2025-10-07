@@ -6,6 +6,8 @@ const MapBarContext = createContext();
 const initValue = {
     view: "",
     data: {},
+    project: "NORWICH PORTLAND JAMAICA",
+    extent: [-76.475188, 18.191876],
 };
 
 function reducer(state, action) {
@@ -17,8 +19,14 @@ function reducer(state, action) {
             };
         case "data":
             return {
-                ...initValue,
+                ...state,
                 data: action.payload,
+            };
+        case "project":
+            return {
+                ...state,
+                project: action.payload.name,
+                extent: action.payload.extent,
             };
         default:
             return state;

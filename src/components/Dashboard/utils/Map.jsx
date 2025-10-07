@@ -1,20 +1,17 @@
 import React, { memo, useEffect } from "react";
-import { useMap } from "../../shared/hooks/useMap";
-import { useMapContext } from "../../shared/Context/MapContext";
+import { useMap } from "../../../shared/hooks/useMap";
+import { useMapContext } from "../../../shared/Context/MapContext";
 const Map = () => {
     const { viewRef, mapViewModel } = useMap();
     const { dispatch } = useMapContext();
 
     useEffect(() => {
         if (!mapViewModel) return; // wait until ready
-
         dispatch({
             type: "view",
             payload: mapViewModel,
         });
-
         const handleClick = (event) => {
-            console.log("pointer-click");
             mapViewModel.hitTest(event).then((res) => {
                 if (res.results.length) {
                     console.log("HitTest results:", res);
