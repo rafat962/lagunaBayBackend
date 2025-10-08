@@ -76,6 +76,7 @@ const FormMap = () => {
                 SizeFT: data?.SizeFT ?? "",
                 Size: data?.Size ?? "",
                 Price_USD: data?.Price_USD ?? "",
+                Price_JMD: data?.Price_JMD ?? "",
                 Lot_Type: data?.Lot_Type ?? "",
                 Status: data?.Status ?? "",
                 Parcel_View: data?.Parcel_View ?? "",
@@ -95,6 +96,7 @@ const FormMap = () => {
             Size: "",
             SizeFT: "",
             Price_USD: "",
+            Price_JMD: "",
             Status: "",
             Parcel_View: "",
             Land_Terrain: "",
@@ -114,6 +116,7 @@ const FormMap = () => {
                 Lot_Type: Formdata.Lot_Type,
                 Size: Formdata.Size,
                 Price_USD: Formdata.Price_USD,
+                Price_JMD: Formdata.Price_JMD,
                 Status: Formdata.Status,
                 SizeFT: Formdata.SizeFT,
                 Parcel_View: Formdata.Parcel_View,
@@ -232,6 +235,24 @@ const FormMap = () => {
                                 id="standard-basic"
                                 type="text"
                                 label="Price_USD"
+                            />
+                        )}
+                    />
+                </div>
+                {/* Price_JMD*/}
+                <div className="min-w-full">
+                    <Controller
+                        key="Price_JMD"
+                        name="Price_JMD"
+                        control={control}
+                        render={({ field }) => (
+                            <TextField
+                                value={field.value || ""} // Ensure value is never null
+                                {...field}
+                                className=" w-full text-right"
+                                id="standard-basic"
+                                type="text"
+                                label="Price_JMD"
                             />
                         )}
                     />

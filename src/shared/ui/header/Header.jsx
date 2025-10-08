@@ -46,9 +46,7 @@ const Header = () => {
     }, [searchParams, view]);
     const ShareMap = () => {
         const extent = searchParams.get("extent");
-        const extentArray = JSON.parse(extent);
-        const Sextent = JSON.stringify(extentArray);
-        const url = `https://lagunabay.netlify.app/MainMap?project=${project}&extent=${Sextent}`;
+        const url = `https://lagunabay.netlify.app/MainMap?project=${project}&extent=${extent}`;
         // Copy URL to clipboard
         navigator.clipboard
             .writeText(url)
@@ -66,9 +64,7 @@ const Header = () => {
     };
     const ShareMapBackend = () => {
         const extent = searchParams.get("extent");
-        const extentArray = JSON.parse(extent);
-        const Sextent = JSON.stringify(extentArray);
-        const url = `https://ecosteadbackend.netlify.app/dashboard?project=${project}&extent=${Sextent}`;
+        const url = `https://ecosteadbackend.netlify.app/dashboard?project=${project}&extent=${extent}`;
         // Copy URL to clipboard
         navigator.clipboard
             .writeText(url)
