@@ -90,7 +90,7 @@ const Header = () => {
                     {/* Expand */}
                     <Expand />
                     <div className="flex items-center justify-center w-full ">
-                        <Project />
+                        {/* <Project /> */}
                     </div>
                     {/* SearchBar */}
                     {/* <Search /> */}
@@ -100,14 +100,14 @@ const Header = () => {
                 </div>
                 {/* right */}
                 <div className="flex items-center justify-center space-x-8">
-                    <HiShare
+                    {/* <HiShare
                         onClick={ShareMapBackend}
                         className=" cursor-pointer text-2xl hover:text-blue-500 trans"
                     />
                     <HiOutlineShare
                         onClick={ShareMap}
                         className=" cursor-pointer text-2xl hover:text-blue-500 trans"
-                    />
+                    /> */}
                 </div>
                 {/* <div className="flex">
                     {darkMode && (
