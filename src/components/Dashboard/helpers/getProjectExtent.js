@@ -7,6 +7,10 @@ const projects = [
         name: "VILLANOVA MEWS",
         extent: [-76.9741388, 17.9904303],
     },
+    {
+        name: "DRAX HALL",
+        extent: [-77.1887546, 18.4227611],
+    },
 ];
 
 function getExtent(name) {
