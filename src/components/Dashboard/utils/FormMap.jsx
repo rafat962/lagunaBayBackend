@@ -2,7 +2,9 @@
 import {
     Backdrop,
     Button,
+    Checkbox,
     CircularProgress,
+    ListItemText,
     MenuItem,
     TextField,
 } from "@mui/material";
@@ -81,6 +83,7 @@ const FormMap = () => {
                 Status: data?.Status ?? "",
                 Parcel_View: data?.Parcel_View ?? "",
                 Land_Terrain: data?.Land_Terrain ?? "",
+                HouseType: data?.HouseType?.split(",") ?? [],
                 images: [],
             };
             getAttachment(data?.OBJECTID);
@@ -100,12 +103,14 @@ const FormMap = () => {
             Status: "",
             Parcel_View: "",
             Land_Terrain: "",
+            HouseType: [],
             images: [],
         },
     });
     const [open, setOpen] = useState(false);
     const [previews, setPreviews] = useState([]);
     function onSuccess(Formdata) {
+        console.log(Formdata.HouseType);
         if (!data || Object.keys(data).length === 0) return;
         if (!Formdata) return;
         setOpen(true);
@@ -121,8 +126,10 @@ const FormMap = () => {
                 SizeFT: Formdata.SizeFT,
                 Parcel_View: Formdata.Parcel_View,
                 Land_Terrain: Formdata.Land_Terrain,
+                HouseType: Formdata.HouseType.join(","),
             },
         };
+        console.log(updatedFeature);
         Parcels.applyEdits({
             updateFeatures: [updatedFeature],
         })
@@ -395,6 +402,54 @@ const FormMap = () => {
                                 >
                                     Slopes below road level
                                 </MenuItem>
+                            </TextField>
+                        )}
+                    />
+                </div>
+                {/* HouseType */}
+                <div className="min-w-full ">
+                    <Controller
+                        key="HouseType"
+                        name="HouseType"
+                        control={control}
+                        defaultValue={[]} // لازم array لأن الاختيار متعدد
+                        render={({ field }) => (
+                            <TextField
+                                {...field}
+                                className="w-full text-right"
+                                id="house-type-select"
+                                select
+                                label="House Type"
+                                SelectProps={{
+                                    multiple: true,
+                                    value: field.value || [],
+                                    onChange: (e) =>
+                                        field.onChange(e.target.value),
+                                    renderValue: (selected) =>
+                                        selected.join(", "), // عرض القيم المختارة
+                                }}
+                            >
+                                {[
+                                    "Tiny house",
+                                    "Studio house",
+                                    "Single floor house",
+                                    "Two floor house",
+                                    "Three floor house",
+                                    "Duplex house",
+                                    "Town house",
+                                    "Villa",
+                                    "Basement",
+                                    "Roof top deck",
+                                ].map((option) => (
+                                    <MenuItem key={option} value={option}>
+                                        <Checkbox
+                                            checked={field.value?.includes(
+                                                option
+                                            )}
+                                        />
+                                        <ListItemText primary={option} />
+                                    </MenuItem>
+                                ))}
                             </TextField>
                         )}
                     />
