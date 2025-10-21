@@ -46,7 +46,7 @@ const Header = () => {
     }, [searchParams, view]);
     const ShareMap = () => {
         const extent = searchParams.get("extent");
-        const url = `https://lagunabay.netlify.app/MainMap?project=${project}&extent=${extent}`;
+        const url = `https://realestatemerchants.netlify.app/MainMap?project=${project}&extent=${extent}`;
         // Copy URL to clipboard
         navigator.clipboard
             .writeText(url)
