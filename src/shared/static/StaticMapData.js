@@ -2,7 +2,7 @@ import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 
 const Parcels = new FeatureLayer({
     portalItem: {
-        id: "0e77a171e98c409a929e435b13269b2e", // Your portal item ID
+        id: "b6ba1c62635742bf86b9589fee86c9d5", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
     title: "Parcels",
@@ -26,45 +26,39 @@ const Parcels = new FeatureLayer({
     ],
     labelsVisible: true,
 });
-// const Parcels = new FeatureLayer({
-//     portalItem: {
-//         id: "08e5d450059d4bc8b223e187c500991e", // Your portal item ID
-//     },
-//     outFields: ["*"], // Ensure all fields are available
-// });
 const dry_gully = new FeatureLayer({
     portalItem: {
-        id: "1ad5c87bdf954de2a6fef701fb8eed6e", // Your portal item ID
+        id: "b6ba1c62635742bf86b9589fee86c9d5", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const NWC = new FeatureLayer({
     portalItem: {
-        id: "16d24dcfc5af4c12a056004a52e50e2b", // Your portal item ID
+        id: "a483d02b1bf54d2f8ab5417b38380d74", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const detention_pond = new FeatureLayer({
     portalItem: {
-        id: "43857943807e4b61a898df7f53e6c3e6", // Your portal item ID
+        id: "62d0d45469c64daea047e77401f18321", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const Future_Development = new FeatureLayer({
     portalItem: {
-        id: "dc04b442cbd844c1aa2d6d72cfd5339d", // Your portal item ID
+        id: "05eeb7b0ec734343850119d69d9cfa79", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const roads = new FeatureLayer({
     portalItem: {
-        id: "a4ddef94c886474392a20ed39569c796", // Your portal item ID
+        id: "d523a118f7964ed7bbdabc012fbcdfff", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const open_area = new FeatureLayer({
     portalItem: {
-        id: "4dc5206e1dad4a9f9851b57da3cb5090", // Your portal item ID
+        id: "f0edf81c8fb848ecaa22bad009d14cba", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
