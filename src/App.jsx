@@ -9,8 +9,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useGetDarkmode } from "./shared/hooks/useGetDarkmode";
-import { useEffect, useMemo } from "react";
-import getToken from "./shared/helpers/GetToken";
+import { useMemo } from "react";
 import { NavContext } from "./shared/Context/MapContext";
 const AppContainer = styled.div`
     box-sizing: border-box;
@@ -34,9 +33,6 @@ const routs = createBrowserRouter([
 ]);
 
 function App() {
-    useEffect(() => {
-        getToken();
-    }, []);
     const { mode } = useGetDarkmode();
     let currentMode = "dark";
     mode === "dark" ? (currentMode = "dark") : (currentMode = "light");
