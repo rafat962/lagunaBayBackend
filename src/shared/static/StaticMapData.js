@@ -1,6 +1,6 @@
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import esriConfig from "@arcgis/core/config.js";
-esriConfig.apiKey = JSON.parse(localStorage.getItem("LayerToken"));
+// esriConfig.apiKey = JSON.parse(localStorage.getItem("LayerToken"));
 const Parcels = new FeatureLayer({
     portalItem: {
         id: "b6ba1c62635742bf86b9589fee86c9d5", // Your portal item ID
