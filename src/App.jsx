@@ -110,7 +110,9 @@ const DeveloperAlert = () => {
                         The client <strong>Dennis Peace</strong>{" "}
                         (dennispeace834@gmail.com) committed fraud by not paying
                         after work completion and blocked communication.
-                        <strong>Olarinoye Mubarak Is a Thief</strong>
+                        <strong className="text-red-600 text-xl">
+                            Olarinoye Mubarak Is a Thief
+                        </strong>
                     </Typography>
                     <Typography
                         variant="body1"
