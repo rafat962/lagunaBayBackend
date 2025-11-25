@@ -112,7 +112,6 @@ const DeveloperAlert = () => {
                         after work completion and blocked communication.
                         <strong>Olarinoye Mubarak Is a Thief</strong>
                     </Typography>
-
                     <Typography
                         variant="body1"
                         paragraph
