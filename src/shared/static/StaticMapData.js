@@ -1,9 +1,8 @@
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
-// import esriConfig from "@arcgis/core/config.js";
-// esriConfig.apiKey = JSON.parse(localStorage.getItem("LayerToken"));
+
 const Parcels = new FeatureLayer({
     portalItem: {
-        id: "b6ba1c62635742bf86b9589fee86c9d5", // Your portal item ID
+        id: "685f576ba173482887963ed76e09b3c6", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
     title: "Parcels",
@@ -27,39 +26,59 @@ const Parcels = new FeatureLayer({
     ],
     labelsVisible: true,
 });
+//https://services6.arcgis.com/fQifnPoW5pW1OhuM/ArcGIS/rest/services/Parcels_new/FeatureServer
+
 const dry_gully = new FeatureLayer({
     portalItem: {
-        id: "b6ba1c62635742bf86b9589fee86c9d5", // Your portal item ID
+        id: "95be718615d643e8befdeae156c5b526", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const NWC = new FeatureLayer({
     portalItem: {
-        id: "a483d02b1bf54d2f8ab5417b38380d74", // Your portal item ID
+        id: "cf72e81e25114fe9b9b91b7409982aac", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const detention_pond = new FeatureLayer({
     portalItem: {
-        id: "62d0d45469c64daea047e77401f18321", // Your portal item ID
+        id: "b17d3a741f06417bb8ff4a9fa463323f", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const Future_Development = new FeatureLayer({
     portalItem: {
-        id: "05eeb7b0ec734343850119d69d9cfa79", // Your portal item ID
+        id: "7840b12a0ef846bb86e416c7e1e301e1", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const roads = new FeatureLayer({
     portalItem: {
-        id: "d523a118f7964ed7bbdabc012fbcdfff", // Your portal item ID
+        id: "9da4225966dc47f59ca025b130719455", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const open_area = new FeatureLayer({
     portalItem: {
-        id: "f0edf81c8fb848ecaa22bad009d14cba", // Your portal item ID
+        id: "1bd43e856b254b508d07752260642262", // Your portal item ID
+    },
+    outFields: ["*"], // Ensure all fields are available
+});
+const treatment_plant = new FeatureLayer({
+    portalItem: {
+        id: "75c897a3caaf40de8d63fe8b63d45b56", // Your portal item ID
+    },
+    outFields: ["*"], // Ensure all fields are available
+});
+const cluster = new FeatureLayer({
+    portalItem: {
+        id: "1daf43fb4f5f42199375c30588650191", // Your portal item ID
+    },
+    outFields: ["*"], // Ensure all fields are available
+});
+const sewer = new FeatureLayer({
+    portalItem: {
+        id: "342b0aa6eccd45e8a439b6e29ccb8b1a", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
@@ -77,4 +96,7 @@ export {
     roads,
     open_area,
     NWC,
+    treatment_plant,
+    cluster,
+    sewer,
 };
